@@ -13,7 +13,7 @@ variable "ami_id" {
 
 variable "key_name" {
   type    = "string"
-  default = "ec2-demo"
+  default = "user34"
 }
 
 variable "instance_type" {
@@ -23,7 +23,6 @@ variable "instance_type" {
 
 variable "subnets" {
   type    = list(string)
-  default = ["subnet-59b98303","subnet-0d7cb232"]
 }
 
 variable "azs" {
@@ -33,5 +32,4 @@ variable "azs" {
 
 variable "security_grpup_id" {
   type    = "string"
-  default = "sg-53623a20"
 }

@@ -1,13 +1,17 @@
-provider "aws" {
-  region     = var.region
-}
-
 resource "aws_launch_configuration" "launch_config" {
   name          = "web_config"
   image_id      = lookup(var.ami_id, var.region)
   instance_type = "t2.micro"
   key_name      = var.key_name
   security_groups = [ var.security_grpup_id]
+  user_data = <<EOF
+        #! /bin/bash
+                    sudo yum update -y
+        sudo yum install -y httpd.x86_64
+        sudo service httpd start
+        sudo service httpd enable
+        echo "<h1>Deployed ELB Instance Example 3</h1>" | sudo tee /var/www/html/index.html
+	  EOF
 }
 
 resource "aws_autoscaling_group" "example_autoscaling" {
