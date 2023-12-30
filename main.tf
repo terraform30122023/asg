@@ -23,7 +23,7 @@ resource "aws_autoscaling_group" "example_autoscaling" {
   desired_capacity          = 1
   force_delete              = true
   launch_configuration      = aws_launch_configuration.launch_config.name
-  availability_zones        = ["us-east-1a","us-east-1b"]
+  #availability_zones        = ["us-east-1a","us-east-1b"]
   vpc_zone_identifier       = var.subnets
 
 }
